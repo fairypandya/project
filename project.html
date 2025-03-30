@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/736x/39/60/b2/3960b2278f76ac2795e5b9978d82c2c6.jpg'); /* Change to your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 80px; /* Increased space below the title */
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 28px;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        textarea {
+            width: 300px;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+        .counter {
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            min-width: 150px;
+        }
+    </style>
+</head>
+<body>  
+    <h1>Word and Character Counter</h1>  
+    <div class="container">
+        <textarea id="textInput" placeholder="Type something..."></textarea>
+        <div class="counter">
+            <p><strong>Words:</strong> <span id="wordCount">0</span></p>
+            <p><strong>Characters:</strong> <span id="charCount">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        const textInput = document.getElementById("textInput");
+        const wordCount = document.getElementById("wordCount");
+        const charCount = document.getElementById("charCount");
+
+        textInput.addEventListener("input", () => {
+            let text = textInput.value.trim();
+            charCount.textContent = text.length;
+            wordCount.textContent = text.length > 0 ? text.split(/\s+/).filter(word => word !== "").length : 0;
+        });
+    </script>
+</body>
+</html>
